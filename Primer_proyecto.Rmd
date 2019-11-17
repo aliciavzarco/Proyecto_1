@@ -1,39 +1,159 @@
 ---
 title: "ProyectoRM_1"
-author: "Alicia Viñas"
-date: "2019-11-15"
-output: 
-  html_document: 
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: true
+author: "Alicia Viñas Zarco"
+output:
+  html_document:
     highlight: textmate
     theme: sandstone
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
 ---
+<div style="text-align: justify">
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+<br>
 
-Roses are <span style="color:red">red</span>, 
-violets are <span style="color:blue">blue</span>.
+A lo largo de este documento vamos a llevar a cabo una sencilla revisión de algunos elementos estudiados durante estas semanas.
 
-Cosas guapisimas con mtcars http://larmarange.github.io/analyse-R/rmarkdown-les-rapports-automatises.html#en-tete-preambule
+Para ello, vamos a dividir el documento en tres secciones. 
 
-ojo con el tamaño de las gráficas, creo qeu se especifica en la cabecera
+1. **Expresiones regulares**
+
+Identificaremos en internet dos páginas donde se discuta sobre el uso de expresiones regulares en RStudio, analizando cual de las dos es más completa
+
+2. **Markdown**
+
+Realizaremos el mismo análisis que en la sección anterior, pero con páginas sobre Markdown.
+
+3. **Estudio descriptivo de Airquality dataset**
+
+En esta última sección trabajaremos con uno de los datasets más populares: Airquality. 
+
+<br>
+<br>
+
+# Expresiones regulares
+
+Las expresiones regulares, también conocidas como *regex*, son una herramienta para la manipulación de cadenas de texto (strings). Es importante conocer y controlar el uso de esta herramienta, por lo que a continuación vamos a analizar y comparar dos páginas que hablan sobre las principales expresiones regulares
+
+## Recurso 1
+
+Vamos a comenzar revisando este [documento](http://rpubs.com/ydmarinb/429756) publicado en internet, que ha sido realizado también con Rmardown. 
+
+
+Tras una breve definición, abre una amplia sección de **teoría**, donde se estudian distintos aspectos de las expresiones regulares:
+
+  - Cuantificadores 
+  - Alternación
+  - Agrupación
+  - Barra invertida
+  - Signo de admiración
+  - Metacaracteres especiales
+  
+
+Sin embargo, antes de desarrollar estos puntos, el autor define el concepto *cláusula de Kleene*:
+
+> Es una operación que se aplica sobre un conjunto de cadenas de caracteres o un conjunto de símbolos o caracteres, y representa el conjunto de las cadenas que se pueden formar tomando cualquier número de cadenas del conjunto inicial, posiblemente con repeticiones, y concatenándolas entre sí.
+
+Esta definición puede ser útil para aquellos usuarios que no tengan conocimientos previos avanzados en matemáticas y/o computación.
+
+Después comienza a revisar cada uno de los aspectos enumerados anteriormente. Proporciona los casos más comunes dentro de cada categoría, describiendo su uso. 
+
+Como esta página hace referencia específicamente a las expresiones regulares en RStudio, tiene una sección llamada **implementación en R**. Aquí comenta los comandos más utilizados para trabajar con cadenas de texto:
+
+| Detección del patrón | División de un string usando un patrón | Localización del patrón |   Extrae patrón   |
+| -------------------- | -------------------------------------- | ----------------------- | ----------------- |
+| `grep`               | `strsplit`                             | `str_locate`            | `regmatches`      |    
+| `grepl`              |                                        | `str_locate_all`        | `regexpr`         |
+| `str_detect`         |                                        |                         | `gregexpr`        |
+                                                                                          | `str_extract`     |
+                                                                                          | `str_extract_all` |
+
+Muchos de estos comandos están recogidos en la librería `stringr`.
+
+Por último, recoge una sección llamada **reemplazar patrón**. No se explica muy bien porque considera esto una nueva sección, y no otro tipo de operación más dentro del apartado anterior.
+
+Debemos señalar que esta página hace referencia a los comandos utilizados en R, no en Rstudio.
+
+
+## Recurso 2
+
+Esta segunda [página](https://eldesvandejose.com/2017/08/18/expresiones-regulares-general/) también está dedicada al estudio de las expresiones regulares. Sin embargo, el enfoque y el alcance es bastante distinto. Está dividida en tres partes:
+
+- Expresiones regulares
+- Flags
+- Expresiones regulares habituales
+
+La primera sección, tal y como su nombre indica, trata de recoger las principales expresiones regulares. Aunque la selección no es muy amplia, cada expresión viene acompañada de una pequeña explicación sobre su uso, lo que facilita su comprensión
+
+
+Pero quizás, lo más interesante de este recurso es la sección de **expresiones regulares habituales**. Proporcionan una breve lista con las expresiones utilizadas de forma recurrente. Aunque algunas son mejorables, pueden llegar a ser de gran utilidad.
+
+Esta página no habla sobre comandos relacionados con expresiones regulares.
+
+---
+
+Ambos recursos tratan el tema de una forma resumida y sutil. Recogen las principales expresiones, la primera página incluye los comandos utilizados en R, la segunda las expresiones regulares más habituales. Sin embargo, en ninguna de las dos se proporciona un ejemplo para cada operador.
+
+En resumen, aunque recogen información bastante útil y de forma resumida, no ofrecen mucho más que las conocidas *Cheat sheets*. A continuación podemos ver una para RStudio:
+
+![Cheat Sheet Regex](https://image.slidesharecdn.com/ztregular-expressions-cheat-sheet-170501070609/95/regular-expressions-cheat-sheet-1-638.jpg?cb=1493622569)
+
+<br>
+<br>
+
+# Markdown
+
+Markdown es un lenguaje que facilita la aplicación de formato a un texto. Es muy conocido por tener diversas ventajas como[^1]:
+
+1. Es un lenguaje universal.
+2. Se puede utilizar como base para cualquier otro formato como PDF, HTML...
+3. Al ser ficheros planos, el control de versiones (Git) te deja ver fácilmente los cambios
+
+Al igual que en la sección anterior, vamos a analizar dos páginas donde hacen una rápida revisión por los recursos más comunes en Markdown.
+
+## Recurso 1
+
+La primera [página](http://rusersgroup.com/blog/rmarkdown/) recoge la información básica para conocer el uso de Markdown. 
+
+Trata la introducción de cabeceras, viñetas, código, ecuaciones... e incluso elementos menos comunes como el uso de <span style="color:orange">color en el texto</span>. Lo hace de una forma resumida pero suficiente para su compresión. Proporciona información no tan básica, pero útil, sobre algunas de estas formas de sintáxis. Por ejemplo, muestra como alinear los elementos de una tabla, realizar un diagrama o incluir un video dentro de nuestro Markdown.
+
+
+Al final tiene una sección de **integración en R**, donde se habla sobre el uso de este tipo de documentos dentro del entorno R. 
+
+Algo muy positivo de este recurso es que incluye un pequeño apartado donde recoge las limitaciones de Markdown, así como posibles soluciones.
+
+## Recurso 2
+
+Esta [web](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) también analiza la sintáxis dentro de un Markdown.
+
+Al igual que en recurso anterior, estudia elementos fundamentales como tablas, listas o cabeceras. Sin embargo, faltan algunos muy utilizados como ~~tachado~~ o la formación de ecuaciones como la de la fuerza de la gravedad:
+
+$$F=G\frac{(m_1*m_2)}{d^2}$$
+
+---
+
+El primer recurso es bastante más completo que el segundo. Sin embargo, el diseño del segundo es más limpio, lo cual facilita en parte su comprensión. 
+
+Para concluir esta sección, podemos decir que hay muchísimos recursos para aprender a utilizar Markdown. De hecho, esta sobreinformación probablemente sea el principal obstáculo para el aprendizaje.
+
+Al igual que en la sección anterior, podemos contar con *Cheat sheets* que nos facilitan la tarea, al resumir en poco espacio la información más esencial:
+
+![Cheat Sheet Markdown](https://i.pinimg.com/originals/22/13/ad/2213ad0620372d995a0b9f79ba5215b5.jpg)
 
 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# airquality
 
-```{r cars}
-summary(cars)
-```
 
-## Expresiones regulares
+https://www.rdocumentation.org/packages/datasets/versions/3.6.1/topics/airquality
 
+
+[^1]: Fuente: https://www.danielprimo.io/blog/documentacion-para-clientes-en-markdown
+ </div>

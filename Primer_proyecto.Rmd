@@ -1,14 +1,16 @@
 ---
-title: "ProyectoRM_1"
+title: "Proyecto Final"
 author: "Alicia Viñas Zarco"
 output:
   html_document:
-    highlight: textmate
+    highlight: tango
     theme: sandstone
-    toc: yes
-    toc_float: yes
-  pdf_document:
-    toc: yes
+    toc: true
+    toc_float: 
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 2
+ 
 ---
 <div style="text-align: justify">
 
@@ -20,30 +22,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 A lo largo de este documento vamos a llevar a cabo una sencilla revisión de algunos elementos estudiados durante estas semanas.
 
-Para ello, vamos a dividir el documento en tres secciones. 
+Para ello, vamos a dividir el trabajo en tres secciones. 
 
 1. **Expresiones regulares**
 
-Identificaremos en internet dos páginas donde se discuta sobre el uso de expresiones regulares en RStudio, analizando cual de las dos es más completa
+Identificaremos en internet dos páginas donde se discuta sobre el uso de expresiones regulares, analizando cual de las dos es más completa
 
 2. **Markdown**
 
-Realizaremos el mismo análisis que en la sección anterior, pero con páginas sobre Markdown.
+Realizaremos el mismo análisis que en la sección anterior, pero con páginas relacionadas con Markdown.
 
-3. **Estudio descriptivo de Airquality dataset**
+3. **Estudio descriptivo de Swiss**
 
-En esta última sección trabajaremos con uno de los datasets más populares: Airquality. 
+En esta última sección trabajaremos con uno de los datasets de RStudio: *Swiss*. 
 
 <br>
 <br>
 
-# Expresiones regulares
+# Expresiones regulares {.tabset}
 
-Las expresiones regulares, también conocidas como *regex*, son una herramienta para la manipulación de cadenas de texto (strings). Es importante conocer y controlar el uso de esta herramienta, por lo que a continuación vamos a analizar y comparar dos páginas que hablan sobre las principales expresiones regulares
+Las **expresiones regulares**, también conocidas como ***regex***, son una herramienta para la manipulación de cadenas de texto (strings). Es importante conocer y controlar el uso de esta herramienta, por lo que a continuación vamos a analizar y comparar dos páginas que hablan sobre las principales expresiones regulares
 
 ## Recurso 1
 
-Vamos a comenzar revisando este [documento](http://rpubs.com/ydmarinb/429756) publicado en internet, que ha sido realizado también con Rmardown. 
+Vamos a comenzar revisando este [documento](http://rpubs.com/ydmarinb/429756) publicado en internet, que ha sido realizado también con Rmarkdown. 
 
 
 Tras una breve definición, abre una amplia sección de **teoría**, donde se estudian distintos aspectos de las expresiones regulares:
@@ -58,7 +60,7 @@ Tras una breve definición, abre una amplia sección de **teoría**, donde se es
 
 Sin embargo, antes de desarrollar estos puntos, el autor define el concepto *cláusula de Kleene*:
 
-> Es una operación que se aplica sobre un conjunto de cadenas de caracteres o un conjunto de símbolos o caracteres, y representa el conjunto de las cadenas que se pueden formar tomando cualquier número de cadenas del conjunto inicial, posiblemente con repeticiones, y concatenándolas entre sí.
+> "Es una operación que se aplica sobre un conjunto de cadenas de caracteres o un conjunto de símbolos o caracteres, y representa el conjunto de las cadenas que se pueden formar tomando cualquier número de cadenas del conjunto inicial, posiblemente con repeticiones, y concatenándolas entre sí."
 
 Esta definición puede ser útil para aquellos usuarios que no tengan conocimientos previos avanzados en matemáticas y/o computación.
 
@@ -67,16 +69,16 @@ Después comienza a revisar cada uno de los aspectos enumerados anteriormente. P
 Como esta página hace referencia específicamente a las expresiones regulares en RStudio, tiene una sección llamada **implementación en R**. Aquí comenta los comandos más utilizados para trabajar con cadenas de texto:
 
 | Detección del patrón | División de un string usando un patrón | Localización del patrón |   Extrae patrón   |
-| -------------------- | -------------------------------------- | ----------------------- | ----------------- |
+| :------------------: | :------------------------------------: | :---------------------: | :---------------: |
 | `grep`               | `strsplit`                             | `str_locate`            | `regmatches`      |    
 | `grepl`              |                                        | `str_locate_all`        | `regexpr`         |
 | `str_detect`         |                                        |                         | `gregexpr`        |
-                                                                                          | `str_extract`     |
-                                                                                          | `str_extract_all` |
+|                      |                                        |                         | `str_extract`     |
+|                      |                                        |                         | `str_extract_all` |
 
 Muchos de estos comandos están recogidos en la librería `stringr`.
 
-Por último, recoge una sección llamada **reemplazar patrón**. No se explica muy bien porque considera esto una nueva sección, y no otro tipo de operación más dentro del apartado anterior.
+Por último, recoge una sección llamada **reemplazar patrón**. Quizás hubiera sido más lógico incluir esta sección dentro de la anterior.
 
 Debemos señalar que esta página hace referencia a los comandos utilizados en R, no en Rstudio.
 
@@ -94,9 +96,14 @@ La primera sección, tal y como su nombre indica, trata de recoger las principal
 
 Pero quizás, lo más interesante de este recurso es la sección de **expresiones regulares habituales**. Proporcionan una breve lista con las expresiones utilizadas de forma recurrente. Aunque algunas son mejorables, pueden llegar a ser de gran utilidad.
 
-Esta página no habla sobre comandos relacionados con expresiones regulares.
+Esta página no habla sobre comandos relacionados con expresiones regulares. 
+
+
+#
 
 ---
+
+**¿Conclusión final?**
 
 Ambos recursos tratan el tema de una forma resumida y sutil. Recogen las principales expresiones, la primera página incluye los comandos utilizados en R, la segunda las expresiones regulares más habituales. Sin embargo, en ninguna de las dos se proporciona un ejemplo para cada operador.
 
@@ -107,9 +114,9 @@ En resumen, aunque recogen información bastante útil y de forma resumida, no o
 <br>
 <br>
 
-# Markdown
+# Markdown  {.tabset}
 
-Markdown es un lenguaje que facilita la aplicación de formato a un texto. Es muy conocido por tener diversas ventajas como[^1]:
+**Markdown** es un lenguaje que facilita la aplicación de formato a un texto. Es muy conocido por tener diversas ventajas como[^1]:
 
 1. Es un lenguaje universal.
 2. Se puede utilizar como base para cualquier otro formato como PDF, HTML...
@@ -121,7 +128,7 @@ Al igual que en la sección anterior, vamos a analizar dos páginas donde hacen 
 
 La primera [página](http://rusersgroup.com/blog/rmarkdown/) recoge la información básica para conocer el uso de Markdown. 
 
-Trata la introducción de cabeceras, viñetas, código, ecuaciones... e incluso elementos menos comunes como el uso de <span style="color:orange">color en el texto</span>. Lo hace de una forma resumida pero suficiente para su compresión. Proporciona información no tan básica, pero útil, sobre algunas de estas formas de sintáxis. Por ejemplo, muestra como alinear los elementos de una tabla, realizar un diagrama o incluir un video dentro de nuestro Markdown.
+Trata la introducción de cabeceras, viñetas, código, ecuaciones... e incluso elementos menos comunes como el uso de <span style="color:orange">color</span> <span style="color:brown">en</span> <span style="color:blue">el</span> <span style="color:pink">texto</span>. Lo hace de una forma resumida pero suficiente para su compresión. Proporciona información no tan básica, pero útil, sobre algunas de estas formas de sintáxis. Por ejemplo, muestra como alinear los elementos de una tabla, realizar un diagrama o incluir un video dentro de nuestro Markdown.
 
 
 Al final tiene una sección de **integración en R**, donde se habla sobre el uso de este tipo de documentos dentro del entorno R. 
@@ -132,28 +139,177 @@ Algo muy positivo de este recurso es que incluye un pequeño apartado donde reco
 
 Esta [web](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) también analiza la sintáxis dentro de un Markdown.
 
-Al igual que en recurso anterior, estudia elementos fundamentales como tablas, listas o cabeceras. Sin embargo, faltan algunos muy utilizados como ~~tachado~~ o la formación de ecuaciones como la de la fuerza de la gravedad:
+Al igual que en recurso anterior, estudia elementos fundamentales como tablas, listas o cabeceras. Sin embargo, faltan algunos muy utilizados como el ~~tachado~~ o la formación de ecuaciones como la de la fuerza de la gravedad:
 
 $$F=G\frac{(m_1*m_2)}{d^2}$$
 
+# 
+
 ---
+
+**¿Conclusión final?**
 
 El primer recurso es bastante más completo que el segundo. Sin embargo, el diseño del segundo es más limpio, lo cual facilita en parte su comprensión. 
 
-Para concluir esta sección, podemos decir que hay muchísimos recursos para aprender a utilizar Markdown. De hecho, esta sobreinformación probablemente sea el principal obstáculo para el aprendizaje.
+Para concluir este apartado, podemos decir que hay muchísimos recursos para aprender a utilizar Markdown. De hecho, esta sobreinformación probablemente sea el principal obstáculo para el aprendizaje.
 
 Al igual que en la sección anterior, podemos contar con *Cheat sheets* que nos facilitan la tarea, al resumir en poco espacio la información más esencial:
 
 ![Cheat Sheet Markdown](https://i.pinimg.com/originals/22/13/ad/2213ad0620372d995a0b9f79ba5215b5.jpg)
 
+<br>
+<br>
+
+# Estudio descriptivo de Swiss
+
+En esta sección vamos a realizar un estudio descriptivo de *Swiss*. Este dataset mide ciertos indicadores socioeconómicos para cada una de las 47 provincias francófonas de **Suiza** en 1888 [^2]. 
+
+Los indicadores estudian:
+
+- Fertilidad (Ig). Medida de fertilidad estandarizada común
+- Agricultura (%). Hombres dedicados a la agricultura
+- Examen militar (%). Reclutas que recibieron la calificación más alta en el examen del ejército
+- Educación (%). Eduación más allá de la escuela primaria para reclutas
+- Catolicismo (%). Católicos, en oposición a protestante
+- Mortalildad infantil. Nacimientos que viven menos de un año.
+
+## Formato del dataset
+
+Antes de empezar a analizar más en profundidad este dataframe, es interesante conocer su estructura y componentes.
+
+Para empezar, vemos que *Swiss* está compuesta por 47 observaciones, dentro de seis variables:
+```{r dim, echo=FALSE}
+dim(swiss)
+```
+
+Para hacernos una idea de como es el dataset, aquí podemos ver como son las tres primeras filas:
+
+```{r head, echo=FALSE}
+library(knitr)
+
+knitr::kable(
+  head(swiss, 3),
+  format = "pandoc",
+  align = "c"
+)
+```
+
+Y por último, antes de entrar a analizar con más profundidad *Swiss*, vamos a utilizar la función `summary` para ver un resumen estadístico de las columnas:
+
+```{r summary, echo=FALSE}
+knitr::kable(
+  summary(swiss),
+  format = "pandoc",
+  align = "c"
+)
+```
+
+<br>
+
+## Análisis descriptivo
+
+En este apartado vamos a realizar un análisis descriptivo de *Swiss* Para ello, vamos a estudiar la **relación** entre las distintas variables del dataset, observando si existe algún tipo de relación entre ellas.
+
+### Correlación de las variables 
+
+```{r plot, echo=FALSE}
+plot(swiss, col="orange", main="Gráfica 1")
+```
+
+Aquí podemos ver que no existe ningúna correlación pronunciada entre las variables del dataset. Sin embargo, se observa una ligera relación entre las siguientes variables 
+
+  1. `Fertility` - `Examination`
+  2. `Fertility` - `Education`
+  3. `Agriculture` - `Examination`
+  4. `Agriculture` - `Education`
+  5. `Examination` - `Education`
+
+Aunque son cinco relaciones distintas, estamos hablando solamente de cuatro variables. Dos de ellas (`Examination` y `Educacion`) están presentes en las cinco relaciones. Con esta información, vamos a proceder a analizar estas correlaciones .
+
+```{r fertility, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(RColorBrewer)
+
+p <- ggplot(swiss, aes(x= Examination, y=Education, colour= Fertility)) + geom_point() + geom_smooth(color="purple") + ggtitle("Gráfica 2") + theme_light() + scale_colour_distiller(palette= "OrRd") 
+
+library(plotly)
+
+ggplotly(p)
+
+```
+
+Este gráfico dinámico nos muestra la relación entre `Education` y `Examination`. La linea ascendente indica una relación positiva entre ambas variables, lo cual tiene lógica, ya que a mayor nivel de educación, es más probable que obtenga una calificación alta en el examen del ejército. Por otro lado, en lo que se refiere a la relación de la `Fertilidad` con estas dos variables, vemos que existe una relación negativa con ambas. La `Fertilidad` será mayor cuanto menores sean los otros dos indicadores. 
+
+```{r agriculture, echo=FALSE, message=FALSE}
+
+p2 <- ggplot(swiss, aes(x= Examination, y=Education, colour= Agriculture)) + geom_point() + geom_smooth(color="mediumblue") + ggtitle("Gráfica 3") + theme_light() + scale_colour_distiller(palette= "Greens") 
 
 
+ggplotly(p2)
 
-# airquality
+```
+
+Aquí podemos ver que con `Agriculture` ocurre exactamente lo mismo que con `Fertility`: existe una correlación negativa entre la variable y `Education` y `Examination`. Sin embargo, podemos observar que existe una relación un poco más fuerte con esta última.
 
 
-https://www.rdocumentation.org/packages/datasets/versions/3.6.1/topics/airquality
+Como conclusión, vemos que existe una relación entre cuatro de las variables incluidas en nuestro dataset. Aunque dicha relación no es muy fuerte, destacan sobre el resto `Education` y `Examination` con una correlación positiva. 
+
+
+<br>
+
+## Indice Mundial de la Felicidad
+
+Una vez revisados los datos de **Suiza** en 1888 sería interesante conocer la situación actual. 
+
+Hemos analizado varios indicadores socioeconómicos del país. Estos indicadores de bienestar se traducen al grado de felicidad de la población: a mejores condiciones socioeconómicas, cabe pensar que mayor será el nivel de satisfacción o felicidad.
+
+Por ello, hemos obtenido los [datos](https://datosmacro.expansion.com/demografia/indice-felicidad) del informe mundial sobre la felicidad en 2019, realizado por Naciones Unidas.
+
+```{r, echo=FALSE}
+library(rvest)
+
+url <- "https://datosmacro.expansion.com/demografia/indice-felicidad"
+
+tmp <-  read_html(url)
+
+tmp <-  html_nodes(tmp, "table")
+
+felicidad <- html_table(tmp[[1]])
+
+felicidad <- felicidad[, c(1:3)]
+
+colnames(felicidad)[1:3] <- c("Países", "Ranking.Felicidad", "Index.Felicidad")
+
+felicidad$Países <- gsub("\\W", "", felicidad$Países)
+felicidad$Ranking.Felicidad <- gsub("[^0-9]", "", felicidad$Ranking.Felicidad)
+felicidad$Ranking.Felicidad<- as.numeric(felicidad$Ranking.Felicidad)
+felicidad$Index.Felicidad <- gsub(",", ".", felicidad$Index.Felicidad)
+felicidad$Index.Felicidad<- as.numeric(felicidad$Index.Felicidad)
+
+knitr::kable(
+  head(felicidad[order(felicidad$Ranking.Felicidad),]),
+  format = "pandoc",
+  align = "c"
+)
+
+```
+
+Podemos ver que Suiza es el sexto país más feliz del mundo en 2019. Sin duda, es un índicador excelente sobre el bienestar del país. Todo esto indica que, desde 1888 que fueron obtenidos los datos de *Swiss*, el país ha tenido una evolución social muy positiva. 
+
+Hablamos de más de 130 años de diferencia entre ambos estudios, por lo que es complicado sacar una conclusión definitiva. Han ocurrido cientos de acontecimientos que han influido en la evolución del país, pero, sea como fuere, actualmente el **Suiza** tiene un nivel de bienestar envidiable.
+
+<br>
+<br>
+
+# Conclusiones
+
+A lo largo de este documento hemos revisado dos recursos de **expresiones regulares** y **Markdown**, discutiendo brevemente los fallos y posibles mejoras de ambos. Por otro lado, en la anterior sección se ha realizado un **análisis descriptivo** sobre el dataset *Swiss*, analizando sus variables a través de las herramientas que proporciona RStudio.
+
+En su realización hemos intentado utilizar los principales elementos de RMarkdown y algunos de los paquetes de RStudio, y así demostrar su uso y conocimiento.
+
+
 
 
 [^1]: Fuente: https://www.danielprimo.io/blog/documentacion-para-clientes-en-markdown
+[^2]: Fuente: https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/swiss.html
  </div>

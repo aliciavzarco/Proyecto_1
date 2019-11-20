@@ -265,7 +265,7 @@ Hemos analizado varios indicadores socioeconómicos del país. Estos indicadores
 
 Por ello, hemos obtenido los [datos](https://datosmacro.expansion.com/demografia/indice-felicidad) del informe mundial sobre la felicidad en 2019, realizado por Naciones Unidas.
 
-```{r, echo=FALSE}
+```{r felicidad, echo=FALSE, message=FALSE}
 library(rvest)
 
 url <- "https://datosmacro.expansion.com/demografia/indice-felicidad"

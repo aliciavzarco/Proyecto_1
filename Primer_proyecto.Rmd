@@ -7,8 +7,8 @@ output:
     theme: sandstone
     toc: true
     toc_float: 
-      collapsed: false
-      smooth_scroll: false
+      collapsed: true
+      smooth_scroll: true
     toc_depth: 2
  
 ---
